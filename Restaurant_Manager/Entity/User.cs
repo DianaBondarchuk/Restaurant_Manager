@@ -15,6 +15,12 @@ namespace Restaurant_Manager.Entity
         public int RoleId { get; set; }
         public string Phone { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
+        public object Role { get; internal set; }
+        public object FirstName { get; internal set; }
+        public object LastName { get; internal set; }
+        public object Username { get; internal set; }
+        public bool IsActive { get; internal set; }
+        public string? PasswordHash { get; internal set; }
 
         //public Role? Role { get; set; }
     }

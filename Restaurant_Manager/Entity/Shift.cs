@@ -16,7 +16,7 @@ namespace Restaurant_Manager.Entity
         public string Status { get; set; } = "заплановано"; 
 
         
-        //public User? User { get; set; }
+        public User? User { get; set; }
 
     }
 }

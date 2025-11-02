@@ -18,7 +18,7 @@ namespace Restaurant_Manager.Entity
 
      
         public Table? Table { get; set; }
-       // public User? User { get; set; }
+        public User? User { get; set; }
 
     }
 }
