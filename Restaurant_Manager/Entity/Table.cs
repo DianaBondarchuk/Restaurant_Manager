@@ -10,7 +10,7 @@ namespace Restaurant_Manager.Entity
     public class Table
     {
 
-        public int ID { get; set; }
+        public int Id { get; set; }
         public int Number { get; set; }     
         public int Seats { get; set; }       
         public string Status { get; set; } = "вільний"; 

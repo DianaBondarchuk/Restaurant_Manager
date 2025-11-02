@@ -9,7 +9,7 @@ namespace Restaurant_Manager.Entity
     public class Shift
     {
 
-        public int ID { get; set; }
+        public int Id { get; set; }
         public int UserId { get; set; }          
         public DateTime Date { get; set; }        
         public string ShiftTime { get; set; } = ""; 
