@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace Restaurant_Manager
+namespace Restaurant_Manager.Entity
 {
-    internal class Table
+    public class Table
     {
 
         public int ID { get; set; }
@@ -16,6 +16,7 @@ namespace Restaurant_Manager
         public string Status { get; set; } = "вільний"; 
 
         public ICollection<Order>? Orders { get; set; }
+
 
     }
 }

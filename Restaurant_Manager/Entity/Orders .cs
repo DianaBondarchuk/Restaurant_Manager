@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Documents;
 
-namespace Restaurant_Manager
+namespace Restaurant_Manager.Entity
 {
-    internal class Order
+     public class Order
     {
         public int Id { get; set; }
         public int TableId { get; set; }
