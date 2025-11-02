@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Restaurant_Manager
+namespace Restaurant_Manager.Entity
 {
-    internal class Shift
+    public class Shift
     {
 
         public int ID { get; set; }
