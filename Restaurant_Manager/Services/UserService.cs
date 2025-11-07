@@ -53,9 +53,9 @@ namespace Restaurant_Manager.Services
             }
 
             
-            existingUser.FirstName = userToUpdate.FirstName;
+            //existingUser.FirstName = userToUpdate.FirstName;
             existingUser.LastName = userToUpdate.LastName;
-            existingUser.Username = userToUpdate.Username;
+           // existingUser.Username = userToUpdate.Username;
             existingUser.RoleId = userToUpdate.RoleId;
             existingUser.IsActive = userToUpdate.IsActive;
 

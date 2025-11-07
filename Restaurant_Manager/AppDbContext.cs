@@ -1,5 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Restaurant_Manager.Entity; 
+﻿
+
+using System.Configuration;
+using Microsoft.EntityFrameworkCore;
+using Restaurant_Manager.Entity;
 
 namespace Restaurant_Manager
 {
@@ -20,7 +23,29 @@ namespace Restaurant_Manager
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<MenuItem> MenuItems { get; set; }
+        //public AppDbContext()
+        //{
+        //   // this.Database.EnsureCreated();  
+        //}
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+         // string connectionString = ConfigurationManager.ConnectionStrings["Restaurant_ManagerDatabase"]
+           //  .ConnectionString;
+            //MessageBox.Show(connectionString);
+            /// optionsBuilder.UseSqlServer(connectionString);
+            //optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Restaurant_ManagerDatabase;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
+            optionsBuilder.UseSqlServer(@"workstation id=RestaurantManagerDatabase.mssql.somee.com;packet size=4096;user id=vitiellx_SQLLogin_2;pwd=wqmjy4hi4l;data source=RestaurantManagerDatabase.mssql.somee.com;persist security info=False;initial catalog=RestaurantManagerDatabase;TrustServerCertificate=True");
+        }
 
+
+
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+
+        //    base.OnConfiguring(optionsBuilder);
+        //    optionsBuilder.UseSqlServer(connectionString);
+        //}
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
