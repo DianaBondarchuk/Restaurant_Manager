@@ -46,4 +46,30 @@ public class MenuItemService : IMenuItemService
             await _context.SaveChangesAsync();
         }
     }
+
+    public void Add(MenuItem newItem)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public IEnumerable<MenuItem> GetAll()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void Update(MenuItem selectedItem)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void Delete(int id)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    Task<List<MenuItem>> IMenuItemService.GetAllAsync()
+    {
+        throw new System.NotImplementedException();
+    }
 }
+
