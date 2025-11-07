@@ -25,7 +25,7 @@ namespace Restaurant_Manager
         {
             
             services.AddDbContext<AppDbContext>(static options =>
-                options.UseSqlServer(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString));
+                options.UseSqlServer(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))  ;
 
             
             services.AddSingleton<IMenuItemService, MenuItemService>();
