@@ -8,11 +8,14 @@ namespace Restaurant_Manager
 {
     public class AppDbContext : DbContext
     {
+        public AppDbContext()
+        {
+        }
 
-        //public AppDbContext(DbContextOptions<AppDbContext> options)
-        //    : base(options)
-        //{
-        //}
+        public AppDbContext(DbContextOptions<AppDbContext> options)
+            : base(options)
+        {
+        }
 
         public DbSet<Order> Orders { get; set; }
         public DbSet<Shift> Shifts { get; set; }
