@@ -71,5 +71,10 @@ public class MenuItemService : IMenuItemService
     {
         throw new System.NotImplementedException();
     }
+
+    public Task AddAsync(System.Windows.Controls.MenuItem newItem)
+    {
+        throw new System.NotImplementedException();
+    }
 }
 

@@ -1,17 +1,7 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
+﻿
 
-//namespace Restaurant_Manager.ViewModels
-//{
-//    internal class UserViewModel
-//    {
-//    }
-//}
 using Restaurant_Manager.Entity;
-
+using Restaurant_Manager.Commands;
 using Restaurant_Manager.Services;
 using Restaurant_Manager.ViewModels;
 using System.Collections.ObjectModel;
@@ -35,6 +25,6 @@ public class UserViewModel : BaseViewModel
     private async Task LoadUsers()
     {
         Users.Clear();
-        // TODO: Add method in IUserService to get all users
+
     }
 }
