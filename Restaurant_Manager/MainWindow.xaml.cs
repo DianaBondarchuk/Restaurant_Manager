@@ -1,30 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Restaurant_Manager.Views;
+using RestaurantManager.Helpers;
+//using RestaurantManager.Views;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-//namespace Restaurant_Manager
-//{
-//    /// <summary>
-//    /// Interaction logic for MainWindow.xaml
-//    /// </summary>
-//    public partial class MainWindow : Window
-//    {
-//        public MainWindow()
-//        {
-//            InitializeComponent();
-//             AppDbContext appDbContext = new AppDbContext();
-//        }
-//    }
-//}
+namespace RestaurantManager
+{
+    public partial class MainWindow : Window
+    {
+        private NavigationService _navigationService;
+
+        public object MainContent { get; }
+
+        public MainWindow()
+        {
+            InitializeComponent();
+
+            // Ініціалізація NavigationService з ContentControl
+            _navigationService = new NavigationService(MainContent);
+
+            // Встановлюємо стартовий екран (LoginView)
+            _navigationService.Navigate(new LoginView());
+        }
+
+        private void InitializeComponent()
+        {
+            throw new NotImplementedException();
+        }
+
+        // Метод для навігації з ViewModel (опціонально)
+        public void NavigateTo(UserControl view)
+        {
+            _navigationService.Navigate(view);
+        }
+    }
+}

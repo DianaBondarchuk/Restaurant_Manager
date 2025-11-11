@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace Restaurant_Manager.Views
 {
     /// <summary>
-    /// Interaction logic for AdminWindow.xaml
+    /// Interaction logic for UserView.xaml
     /// </summary>
-    public partial class AdminWindow : Window
+    public partial class UserView : Window
     {
-        public AdminWindow()
+        public UserView()
         {
             InitializeComponent();
         }
