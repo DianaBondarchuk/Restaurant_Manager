@@ -8,5 +8,17 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
 
+        <DockPanel LastChildFill="True">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="#007ACC" Height="50">
+                <Button Content="Замовлення" Command="{Binding NavigateOrdersCommand}" Margin="10"/>
+                <Button Content="Меню" Command="{Binding NavigateMenuCommand}" Margin="10"/>
+                <Button Content="Користувачі" Command="{Binding NavigateUsersCommand}" Margin="10"/>
+                <Button Content="Вихід" Command="{Binding LogoutCommand}" Margin="10"/>
+            </StackPanel>
+
+            
+            <ContentControl x:Name="MainContent" Content="{Binding CurrentView}" />
+        </DockPanel>
+
     </Grid>
 </Window>
