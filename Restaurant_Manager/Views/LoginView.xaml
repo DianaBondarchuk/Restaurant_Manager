@@ -13,15 +13,19 @@
                        Margin="0,0,0,20" HorizontalAlignment="Center"/>
 
 
-            <TextBox x:Name="LoginBox" Text="{Binding Username}" Margin="0,0,0,10"/>
+            <TextBox x:Name="LoginBox"  Margin="0,0,0,10"/>
             <TextBlock Text="Логін"
                Foreground="Maroon"
                Margin="5,2,0,0"
                IsHitTestVisible="False"
                VerticalAlignment="Center"/>
 
-            <PasswordBox x:Name="PasswordBox" Margin="0,0,0,20"/>
-            <Button Content="Увійти" Command="{Binding LoginCommand}" Width="100" HorizontalAlignment="Center"/>
+            <PasswordBox x:Name="PasswordBox" Margin="0,0,0,20" />
+            <Button Content="Увійти" Click="Button_ClickAsync"
+                    Width="100" 
+                    HorizontalAlignment="Center"/>
+            <!--Command="{Binding LoginCommand}"-->
+                    
 
         </StackPanel>
     </Grid>
