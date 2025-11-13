@@ -23,14 +23,14 @@ public class MenuViewModel : BaseViewModel
         AddCommand = new RelayCommand(async _ => await AddItem());
     }
 
-    private async Task LoadItems()
+    public async Task LoadItems()
     {
         MenuItems.Clear();
         var items = await _menuService.GetAllAsync();
-        foreach (var item in items) MenuItems.Add(item);
+        //foreach (var item in items) MenuItems.Add(item);
     }
 
-    private async Task AddItem()
+    public async Task AddItem()
     {
         await _menuService.AddAsync(NewItem);
         await LoadItems();
