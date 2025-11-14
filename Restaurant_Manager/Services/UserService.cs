@@ -1,9 +1,10 @@
 ﻿
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Restaurant_Manager.Entity;
 using Restaurant_Manager;
+using Restaurant_Manager.Entity;
 using Restaurant_Manager.Services;
+using System.Threading.Tasks;
+using System.Windows;
 
 public class UserService : IUserService
 {
@@ -14,9 +15,9 @@ public class UserService : IUserService
         _context = context;
     }
 
-    public async Task<User?> AuthenticateAsync(string login, string password)
+    public Task<User?> AuthenticateAsync(string login, string password)
     {
-        return await _context.Users
+        return _context.Users
             .Include(u => u.Role)
             .FirstOrDefaultAsync(u => u.Login == login && u.Password == password && u.IsActive);
     }

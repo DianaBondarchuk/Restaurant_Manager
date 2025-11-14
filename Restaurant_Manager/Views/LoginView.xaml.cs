@@ -35,19 +35,19 @@ namespace Restaurant_Manager.Views
             PasswordBox.Password = "user";
         }
 
-        private async void Button_ClickAsync(object sender, RoutedEventArgs e)
+        private  void Button_ClickAsync(object sender, RoutedEventArgs e)
         {
-            await Login();
+             Login();
         }
-        private async Task Login()
+        private  void Login()
         {
             Username = LoginBox.Text;
             Password = PasswordBox.Password;
             //MessageBox.Show(Username + " " + Password);
-            var user = await _userService.AuthenticateAsync(Username, Password);
+            var user =  _userService.AuthenticateAsync(Username, Password);
             if (user != null)
             {
-                MessageBox.Show($"Welcome, {user.Name}!");
+                MessageBox.Show($"Welcome, {user.Result.Name}!");
                 this.Hide();    
             }
             else
