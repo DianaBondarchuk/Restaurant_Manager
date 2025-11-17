@@ -1,9 +1,9 @@
-﻿using Restaurant_Manager.Services;
+﻿using Restaurant_Manager.Entity;
+using Restaurant_Manager.Services;
 using Restaurant_Manager.ViewModels;
 using RestaurantManager.Helpers;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 public class MenuViewModel : BaseViewModel
@@ -27,7 +27,8 @@ public class MenuViewModel : BaseViewModel
     {
         MenuItems.Clear();
         var items = await _menuService.GetAllAsync();
-        //foreach (var item in items) MenuItems.Add(item);
+        foreach (var item in items)
+            MenuItems.Add(item);
     }
 
     public async Task AddItem()
