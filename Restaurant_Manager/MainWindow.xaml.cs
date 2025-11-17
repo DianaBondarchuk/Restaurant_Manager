@@ -12,31 +12,34 @@ namespace RestaurantManager
 {
     public partial class MainWindow : Window
     {
-        //private NavigationService _navigationService;
-
-        //public DependencyObject MainContent { get; }
-        //RelayCommand command;
         private readonly AppDbContext _context;
+
+        // Сервіси
         private readonly UserService _userService;
-        MenuViewModel menuViewModel;
-        IMenuItemService menuService;
+        private IMenuItemService _menuService;
+        private IOrderService _orderService;
+
+        // ViewModel-и
+        private MenuViewModel _menuViewModel;
+        private OrderViewModel _orderViewModel;
+        private UserViewModel _userViewModel;
         public MainWindow()
         {
             InitializeComponent();
 
-            // Ініціалізація NavigationService з ContentControl
-            //_navigationService = new NavigationService(MainContent);
-            //_navigationService = new NavigationService(MainContent);
-
-            // Встановлюємо стартовий екран (LoginView)
-            //_navigationService.Navigate(new LoginView());
-            //command = new RelayCommand((o) => Login());
             _context = new AppDbContext();
-            _userService = new UserService(_context);
-            LoginView login =new LoginView( _context); 
+
+            var login = new LoginView(_context);
             login.ShowDialog();
-            menuService = new MenuItemService(_context);
-            menuViewModel = new MenuViewModel(menuService);    
+
+            _menuService = new MenuItemService(_context);
+            _orderService = new OrderService(_context);
+            _userService = new UserService(_context);
+
+            _menuViewModel = new MenuViewModel(_menuService);
+            _orderViewModel = new OrderViewModel(_orderService);
+            _userViewModel = new UserViewModel(_userService);   
+
         }
 
         //private readonly IUserService _userService;
@@ -56,28 +59,44 @@ namespace RestaurantManager
 
 
             MessageBox.Show("Відкрито розділ 'Замовлення'");
-            menuViewModel.LoadItems();
+            _orderViewModel.LoadOrdersCommand.Execute(null);
+
+            var window = new OrderView
+            {
+                DataContext = _orderViewModel
+            };
+            window.Show();
 
 
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
 
-            MessageBox.Show("Додано новий елемент меню");
-            menuViewModel.AddItem();
+            MessageBox.Show("Відкрито розділ 'Меню'");
+            await _menuViewModel.LoadItems();
 
-
+            var window = new MenuView
+            {
+                DataContext = _menuViewModel
+            };
+            window.Show();
 
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Відкрито розділ 'Користувачі'"); 
+            MessageBox.Show("Відкрито розділ 'Користувачі'");
+            _userViewModel.LoadUsersCommand.Execute(null);
 
+            var window = new UserView
+            {
+                DataContext = _userViewModel
+            };
+            window.Show();
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
+        private async void Button_Click_3(object sender, RoutedEventArgs e)
         {
 
             Application.Current.Shutdown();
