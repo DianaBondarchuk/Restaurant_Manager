@@ -24,60 +24,61 @@ namespace RestaurantManager
         {
             InitializeComponent();
 
-            // Ініціалізація NavigationService з ContentControl
-            //_navigationService = new NavigationService(MainContent);
-            //_navigationService = new NavigationService(MainContent);
-
-            // Встановлюємо стартовий екран (LoginView)
-            //_navigationService.Navigate(new LoginView());
-            //command = new RelayCommand((o) => Login());
             _context = new AppDbContext();
-            _userService = new UserService(_context);
-            LoginView login =new LoginView( _context); 
+
+            LoginView login = new LoginView(_context);
             login.ShowDialog();
-            menuService = new MenuItemService(_context);
-            menuViewModel = new MenuViewModel(menuService);    
+
+            _menuService = new MenuItemService(_context);
+            _orderService = new OrderService(_context);
+            _userService = new UserService(_context);
+
+            _menuViewModel = new MenuViewModel(_menuService);
+            _orderViewModel = new OrderViewModel(_orderService);
+            _userViewModel = new UserViewModel(_userService);
         }
 
-        //private readonly IUserService _userService;
-
-        //public MainWindow()
-        //{
-        //    InitializeComponent();
-        //    _context = new AppDbContext();
-        //    _userService = new UserService(_context);
-        //}
 
 
-
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
-
-
             MessageBox.Show("Відкрито розділ 'Замовлення'");
-            menuViewModel.LoadItems();
 
+            await _orderViewModel.LoadOrders();
 
+            var window = new OrderView
+            {
+                DataContext = _orderViewModel
+            };
+
+            window.Show();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
+        {;
+            MessageBox.Show("Відкрито розділ 'Меню'");
+
+            await _menuViewModel.LoadItems();
+
+            var window = new MenuView
+            {
+                DataContext = _menuViewModel
+            };
+            window.Show();
+        }
+
+        private async void Button_Click_2(object sender, RoutedEventArgs e)
         {
+            await _userViewModel.LoadUsers();
+            var window = new UserView
+            {
+                DataContext = _userViewModel
+            };
 
-            MessageBox.Show("Додано новий елемент меню");
-            menuViewModel.AddItem();
-
-
-
+            window.Show();
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Відкрито розділ 'Користувачі'"); 
-
-        }
-
-        private void Button_Click_3(object sender, RoutedEventArgs e)
+        private async void Button_Click_3(object sender, RoutedEventArgs e)
         {
 
             Application.Current.Shutdown();
